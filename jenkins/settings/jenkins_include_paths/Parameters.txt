@@ -1,0 +1,14 @@
+﻿■GeneratorDirPath
+　型　　　　　：文字列
+　デフォルト値：<空白>
+　説明　　　　：
+　　すべてのCodeGeneratorがあるフォルダパスを指定します。
+　　※変更しない場合は空欄にします。
+
+■CppDirPath
+　型　　　　　：文字列
+　デフォルト値：<空白>
+　説明　　　　：
+　　C/C++のCodeGeneratorがあるフォルダパスを指定します。
+　　※「%GeneratorDirPath%\main_app」からの相対パスで指定します。
+　　※変更しない場合は空欄にします。
