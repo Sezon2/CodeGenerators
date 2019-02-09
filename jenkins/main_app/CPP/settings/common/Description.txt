@@ -1,2 +1,2 @@
-ï»¿å…¨C/C++ç”¨Generatorå…±é€šè¨­å®š
-â€»å…ˆã«ã€Œnew_generatorã€ã®ã‚¸ãƒ§ãƒ–ã§Generatorã®æ–°è¦ä½œæˆã‚’è¡Œãªã£ã¦ãã ã•ã„ã€‚
+‘SC/C++—pGenerator‹¤’Êİ’è
+¦æ‚Éunew_generatorv‚ÌƒWƒ‡ƒu‚ÅGenerator‚ÌV‹Kì¬‚ğs‚È‚Á‚Ä‚­‚¾‚³‚¢B

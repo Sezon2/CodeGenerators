@@ -1,9 +1,9 @@
-﻿■IsUseAslLog
-　型　　　　　：選択
-　選択値　　　：
-　　変更しない
-　　true
-　　false
-　デフォルト値：変更しない
-　説明　　　　：
-　　AppStdLibのDebug::Logを利用するかどうか。
+��IsUseAslLog
+�@�^�@�@�@�@�@�F�I��
+�@�I��l�@�@�@�F
+�@�@�ύX���Ȃ�
+�@�@true
+�@�@false
+�@�f�t�H���g�l�F�ύX���Ȃ�
+�@�����@�@�@�@�F
+�@�@AppStdLib��Debug::Log�𗘗p���邩�ǂ����B
