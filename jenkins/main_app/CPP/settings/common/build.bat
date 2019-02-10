@@ -11,6 +11,15 @@ if not exist "IsUseAslLog.cmd" if "%IsUseAslLog%"=="変更しない" (
 	rem exit -1
 )
 rem ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+rem ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+rem ■System::EntryPointを利用するかどうか
+rem ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+if not exist "IsUseEntryPointClass.cmd" if "%IsUseEntryPointClass%"=="変更しない" (
+	set IsUseEntryPointClass=true
+	rem echo 「IsUseEntryPointClass」の入力は必須です。
+	rem exit -1
+)
+rem ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 rem ************************************************************************************************
 
 rem ************************************************************************************************
@@ -44,7 +53,9 @@ rem ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 rem ■入力された値系※存在確認不要系
 rem ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 if not "%IsUseAslLog%"=="変更しない" echo set IsUseAslLog=%IsUseAslLog%>IsUseAslLog.cmd
-echo 「IsUseAslLog」設定完了。[IsUseAslLog:%IsUseAslLog%]
+if not "%IsUseAslLog%"=="変更しない" echo 「IsUseAslLog」設定完了。[IsUseAslLog:%IsUseAslLog%]
+if not "%IsUseEntryPointClass%"=="変更しない" echo set IsUseEntryPointClass=%IsUseEntryPointClass%>IsUseEntryPointClass.cmd
+if not "%IsUseEntryPointClass%"=="変更しない" echo 「IsUseEntryPointClass」設定完了。[IsUseEntryPointClass:%IsUseEntryPointClass%]
 rem ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 rem ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 rem ■コードテンプレートフォルダパス
@@ -64,6 +75,7 @@ rem ★全ての設定の結合
 rem ************************************************************************************************
 copy IsUseAslLog.cmd cpp_settings_common.cmd /Y
 copy cpp_settings_common.cmd+CppTemplateDirPath.cmd cpp_settings_common.cmd /B /Y
+copy cpp_settings_common.cmd+IsUseEntryPointClass.cmd cpp_settings_common.cmd /B /Y
 rem ************************************************************************************************
 
 
