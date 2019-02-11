@@ -10,20 +10,20 @@ rem 【実行方法】※本バッチに対して以下のオプションを指定する事が出来ます。
 rem set p1=<mode>
 rem set p2=<mode_target>
 rem set p3=<output_dir>
-rem set p4=<include_class_path> ※【省略可】後からソースにinclude追加する時用。
+rem set p4=<include_class_type> ※【省略可】後からソースにinclude追加する時用。
 rem set p5=<include_class_name> ※【省略可】後からソースにinclude追加する時用。
 rem set p6=<include_class_jname>※【省略可】後からソースにinclude追加する時用。
-rem set p7=<new_include_class_path> ※【省略可】既存のincludeを更新する時の新しいクラスパス。
+rem set p7=<new_include_class_type> ※【省略可】既存のincludeを更新する時の新しいクラスタイプ名。
 rem set p8=<new_include_class_name> ※【省略可】既存のincludeを更新する時の新しいクラス名(英名)。
 rem set p9=<new_include_class_jname>※【省略可】既存のincludeを更新する時の新しいクラス名(日本語名)。
 rem Application-h.cmd
 rem <mode>                   ：動作モード※値：/N＝新規作成[追加]・/U＝更新・/D＝削除
 rem <mode_target>            ：動作対象※値：/ALL＝ファイル全体・/INC＝include部分
 rem <output_dir>             ：出力先フォルダ（指定が無ければデフォルトの場所）
-rem <include_class_path>     ：対象のinclude文のクラスフォルダとクラスのファイル名を除いたパス※「/」区切り。
+rem <include_class_type>     ：対象のinclude文のクラスタイプ名
 rem <include_class_name>     ：対象のinclude文のクラスフォルダとクラスのファイル名(英名)
 rem <include_class_jname>    ：対象のinclude文のクラスフォルダとクラスのファイル名(日本語名)
-rem <new_include_class_path> ：新しいinclude文のクラスフォルダとクラスのファイル名を除いたパス※「/」区切り。
+rem <new_include_class_type> ：新しいinclude文のクラスタイプ名
 rem <new_include_class_name> ：新しいinclude文のクラスフォルダとクラスのファイル名(英名)
 rem <new_include_class_jname>：新しいinclude文のクラスフォルダとクラスのファイル名(日本語名)
 rem //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -41,10 +41,10 @@ rem ----------------------------------------------------------------------------
 set apph_mode_=%p1%
 set apph_mode2_=%p2%
 set apph_output_=%AppDirPath%\result
-set apph_class_path_=%p4%
+set apph_class_type_=%p4%
 set apph_class_name_=%p5%
 set apph_class_jname_=%p6%
-set apph_new_class_path_=%p7%
+set apph_new_class_type_=%p7%
 set apph_new_class_name_=%p8%
 set apph_new_class_jname_=%p9%
 rem ************************************************************************************************
