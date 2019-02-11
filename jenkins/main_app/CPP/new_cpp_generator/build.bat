@@ -167,11 +167,11 @@ rem ****************************************************************************
 rem ★完了メッセージ
 rem ************************************************************************************************
 echo 「%AppName%」の新規作成が完了しました。
-echo 　
+echo _
 echo jenkinsに以下のフォルダを作成してください。
 echo 「%AppName%」
 echo 「%AppName%\settings」
-echo 　
+echo _
 echo jenkinsに以下のジョブを作成してください。
 echo 「%AppName%\settings\app_settings」
 exit 0

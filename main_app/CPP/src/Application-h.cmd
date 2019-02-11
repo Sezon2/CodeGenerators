@@ -34,6 +34,7 @@ rem ****************************************************************************
 set apph_prgname_=Application-h
 set apph_task_id_=%date:~0,4%%date:~5,2%%date:~8,2%%time:~0,2%%time:~3,2%%time:~6,2%
 set apph_tmpl_dir_=%CppTemplateDirPath%\Application-h
+set apph_mod_dir_=%CppDirPath%\src\Application-h
 rem ------------------------------------------------------------------------------------------------
 set apph_is_use_asl_log_=%IsUseAslLog%
 set apph_is_use_entry_point_class_=%IsUseEntryPointClass%
@@ -73,6 +74,7 @@ if not exist "%apph_tmpl_dir_%\tmpl_include_Class.cmd" goto Error6
 if not exist "%apph_tmpl_dir_%\tmpl_include_EntryPoint.cmd" goto Error6
 if not exist "%apph_tmpl_dir_%\tmpl_*.cmd" goto Error6
 if not exist "%apph_output_%\." goto Error7
+if not exist "%apph_mod_dir_%\." goto Error8
 rem ************************************************************************************************
 
 rem ************************************************************************************************
@@ -143,16 +145,8 @@ rem ■EntryPointのインクルード追加※設定に応じて入れない。
 rem ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 if not %apph_is_use_entry_point_class_%==true goto LblNA_Skip_EntryPoint
 rem --------------------------------------------------------------------------------------
-call %apph_tmpl_dir_%\tag_include.cmd
-set replace_left_=\/\/%tag_mfind_%
-call %apph_tmpl_dir_%\tag_include_next_System.cmd
-set replace_right_=\/\/%tag_mfind_%\n\n{__join__}
-mfind /W /Q "/%replace_left_%/%replace_right_%/g" %apph_output_%\%AppName%.h
-rem --------------------------------------------------------
-set replace_left_={__join__}
-call %apph_tmpl_dir_%\tag_include.cmd
-set replace_right_=\/\/%tag_mfind_%
-mfind /W /Q "/%replace_left_%/%replace_right_%/g" %apph_output_%\%AppName%.h
+call %apph_mod_dir_%\new_class_type.cmd System
+if not %ERRORLEVEL%==0 if not %ERRORLEVEL%==1 goto Error200
 rem --------------------------------------------------------------------------------------
 call %apph_tmpl_dir_%\tag_include_next_System.cmd
 set replace_left_=\/\/%tag_mfind_%
@@ -314,6 +308,11 @@ rem ----------------------------------------------------------------------------
 :Error7
 echo [%apph_prgname_%]_[Error]出力先フォルダが見つかりません。
 echo 利用しようとした値：%apph_output_%
+exit /b -1
+rem ------------------------------------------------------------------------------------------------
+:Error8
+echo [%apph_prgname_%]_[Error]このBAT専用のモジュールフォルダが見つかりません。
+echo 利用しようとした値：%apph_mod_dir_%
 exit /b -1
 rem ------------------------------------------------------------------------------------------------
 :Error100
