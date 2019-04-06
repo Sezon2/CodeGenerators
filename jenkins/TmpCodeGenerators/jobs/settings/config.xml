@@ -1,0 +1,92 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>ジェネレータの各種設定</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>InstallPath</name>
+          <description>ジェネレータ本体の保存先パス</description>
+          <defaultValue></defaultValue>
+          <trim>true</trim>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.BatchFile>
+      <command>@echo off&#xd;
+rem ************************************************************************************************&#xd;
+rem ★変数定義&#xd;
+rem ************************************************************************************************&#xd;
+set task_id_=%date:~0,4%%date:~5,2%%date:~8,2%%time:~0,2%%time:~3,2%%time:~6,2%&#xd;
+rem ************************************************************************************************&#xd;
+&#xd;
+&#xd;
+rem ～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～&#xd;
+rem ↓メイン処理&#xd;
+&#xd;
+rem ************************************************************************************************&#xd;
+rem ★ジェネレータ本体の保存先パスの登録&#xd;
+rem ************************************************************************************************&#xd;
+if &quot;%InstallPath%&quot;==&quot;&quot; goto LblSkipRegister00&#xd;
+echo 「ジェネレータ本体の保存先パス」設定を登録中...&#xd;
+rem ------------------------------------------------------------------------------------------------&#xd;
+if not exist &quot;%InstallPath%\.&quot;         goto LblError00&#xd;
+if not exist &quot;%InstallPath%\jenkins\.&quot; goto LblError01&#xd;
+if not exist &quot;%InstallPath%\lib\.&quot;     goto LblError01&#xd;
+if not exist &quot;%InstallPath%\src\.&quot;     goto LblError01&#xd;
+rem ------------------------------------------------------------------------------------------------&#xd;
+echo set &quot;InstallPath=%InstallPath%&quot;&gt;InstallPath.cmd&#xd;
+rem ------------------------------------------------------------------------------------------------&#xd;
+:LblSkipRegister00&#xd;
+rem ************************************************************************************************&#xd;
+&#xd;
+rem ************************************************************************************************&#xd;
+rem ★設定一括読み込み用BATの生成&#xd;
+rem ************************************************************************************************&#xd;
+copy InstallPath.cmd Include.cmd /Y&#xd;
+rem copy Include.cmd+&lt;追加設定ファイル&gt;.cmd Include.cmd /B&#xd;
+rem ************************************************************************************************&#xd;
+&#xd;
+&#xd;
+rem ～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～&#xd;
+rem ↓終了処理&#xd;
+&#xd;
+rem ************************************************************************************************&#xd;
+rem ★完了メッセージ&#xd;
+rem ************************************************************************************************&#xd;
+echo システム設定を更新しました。&#xd;
+exit 0&#xd;
+rem ************************************************************************************************&#xd;
+&#xd;
+&#xd;
+rem ～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～～&#xd;
+rem ↓エラー処理&#xd;
+&#xd;
+rem ************************************************************************************************&#xd;
+rem ★エラーメッセージ&#xd;
+rem ************************************************************************************************&#xd;
+:LblError00&#xd;
+echo 場所「%InstallPath%」にはディレクトリがありません。&#xd;
+exit -1&#xd;
+rem ------------------------------------------------------------------------------------------------&#xd;
+:LblError01&#xd;
+echo 場所「%InstallPath%」はジェネレータ本体のディレクトリではありません。&#xd;
+exit -1&#xd;
+rem ************************************************************************************************&#xd;
+</command>
+    </hudson.tasks.BatchFile>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
