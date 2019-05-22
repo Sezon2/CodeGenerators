@@ -1,4 +1,0 @@
-﻿CodeGeneratorの新規作成ジョブ。
-このジョブを実行したら「main_app」内に「GeneratorName」で指定した名前と同じ名前でフォルダを作成してください。
-また、そのフォルダの中に「settings」フォルダも作成してください。
-※先に「settings\jenkins_settings」のジョブで初期設定を行なってください。

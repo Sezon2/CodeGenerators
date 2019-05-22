@@ -1,6 +1,0 @@
-﻿■GeneratorName
-　型　　　　　：文字列
-　デフォルト値：<空白>
-　説明　　　　：
-　　作成するCodeGeneratorの名前を指定します。
-　　※入力必須。

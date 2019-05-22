@@ -1,2 +1,0 @@
-全C/C++用Generator共通設定
-※先に「new_generator」のジョブでGeneratorの新規作成を行なってください。
